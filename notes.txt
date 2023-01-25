@@ -1,0 +1,132 @@
+*Here is an example of an epicodusStudent object in JavaScript:
+
+let epicodusStudent = {
+  firstName: "Charlie",
+  lastName: "Bucket",
+  year: 2022,
+  track: "Ruby and  React",
+  courses: ["Intro to Programming", "Intermediate JavaScript", "Ruby and Rails", "React"],
+  enrollmentStatus: true   
+};
+
+* let myCat = {
+  name: "Kitty Poppins",
+  speak: function() {
+    console.log("Meow!");
+  }
+  };
+> myCat.speak();
+Meow!
+> myCat['speak']();
+Meow!
+
+*Dot notation is easier to write and read, but bracket notation allows us to use properties with special characters, or select properties using variables. 
+
+> let favColors = {
+  1: "green",
+  2: "fuscia"
+};
+> favColors.1
+Uncaught SyntaxError: Unexpected number
+> favColors["1"];
+"green"
+
+*A constructor function (or just 'constructor')(think blueprint) is a special type of function that is used to make an instance of a type of object, like a Dog object.
+let dog1 = new Dog("Falcor", ["black"], 4);
+let dog2 = new Dog("Nola", ["white", "black"], 6);
+let dog3 = new Dog("Patsy", ["brown"], 7);
+const string4 = new String("A String object");
+> string4.toUpperCase();
+"A STRING OBJECT"
+> "This is " + string4.toLowerCase() + ".";
+"This is a string object."
+// using constructor functions
+> const myCodeSchool = new String("Epicodus");
+> const myFavNumber = new Number(22);
+> const doILikePuppies = new Boolean(true);
+> let testGreeting2 = new String("Hello!");
+undefined
+
+> testGreeting2;
+String {"Hello!"}
+  0: "H", 
+  1: "e", 
+  2: "l", 
+  3: "l", 
+  4: "o", 
+  5: "!", 
+  length: 6, 
+  [[Prototype]]: String, 
+  [[PrimitiveValue]]: "Hello!"
+
+*^literal notation.
+String.prototype.charAt()
+// using literal notation
+> const myCodeSchool = "Epicodus";
+> const myFavNumber = 22;
+> const doILikePuppies = true;
+
+*Prototype
+> testGreeting2.length;
+6
+// [[Prototype]]
+> testGreeting2.__proto__;
+String {'', constructor: ƒ, anchor: ƒ, big: ƒ, blink: ƒ, …}
+// [[PrimitiveValue]]
+> testGreeting2.valueOf();
+"Hello!"
+> const myStr = "Hello!";
+undefined
+> myStr.length;
+6
+> myStr.valueOf(); 
+"Hello!"
+
+*Creating a Custom Constructor Function and Object Type
+> function Dog(dogName, dogColors, dogAge) {
+  this.name = dogName;
+  this.colors = dogColors;
+  this.age = dogAge;
+}
+> let myPuppy = new Dog("Ernie", ["brown", "black"], 3);
+> myPuppy;
+Dog {name: 'Ernie', colors: Array(2), age: 3}
+> myPuppy.name;
+"Ernie"
+> myPuppy.colors;
+["brown","black"]
+> myPuppy.age;
+3
+// instances of the Dog object type
+> let falcor = new Dog("Falcor", ["black"], 4);
+> let nola = new Dog("Nola", ["white", "black"], 6);
+> let patsy = new Dog("Patsy", ["brown"], 7);
+
+**Let's add a custom method to String.prototype:
+
+> String.prototype.addExcitement = function() { return this + "!!!!!!!!!" };
+ƒ () { return this + "!!!!!!!!!" }
+> testGreeting2.addExcitement();
+"Hello!!!!!!!!!!"
+As soon as the new method is added, all current and future strings (or more technically, "instances of the String type") will have access to it. Now I can run testGreeting2.addExcitement() and get Hello!!!!!!!!!.
+
+*OBJECT IN OBJECT
+let tomatoes = { name: "Tomatoes", price: 2.99 };
+let cucumbers = { name: "Cucumbers", price: 0.99 };
+let onions = { name: "Onions", price: 0.79 };
+let groceryStore = { name: "Michael's corner market", products: [tomatoes, cucumbers, onions] };
+
+let iPhone = { name: "iPhone", price: 699 };
+let android = { name: "Android", price: 499 };
+let windowsPhone = { name: "Windows Phone", price: 399 };
+let phoneStore = { name: "RadioShack", products: [iPhone, android, windowsPhone] };
+
+let stores = [groceryStore, phoneStore];
+stores.forEach(function(store) {
+  console.log(store.name + " sells:");
+  store.products.forEach(function(product) {
+    console.log(product.name);
+  });
+  console.log("\n");
+});
+**Note that "\n" creates a new line. (A new line is the equivalent of hitting Enter start a new line).
